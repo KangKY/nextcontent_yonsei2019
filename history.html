@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+
+
+    <div id="main">
+
+      <nav class="fixed-nav white-nav no-shadow">
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">콘텐츠  <span class="raleway">UX</span>평가 히스토리</a>
+          <a href="#" data-target="nav-mobile" class="sidenav-trigger" style="    padding-top: 10px;">
+              <img src="img/icons/manu_open_black.svg">
+          </a>
+
+          <ul id="nav-mobile" class="sidenav">
+            <div class="nav-header center-align valign-wrapper">
+                <a href="#" class="nav-header-close"><i class="material-icons">close</i></a>
+
+                <div class="logininfo width100">
+                    <a class="center-align" href="login.html"><span class="white-text name">로그인해주세요</span></a>
+                </div>
+                
+
+                <div class="userinfo width100">
+                    <a href="account.html" class="center-align"><div class="white-text name user-email">John Doe</div></a>
+                    <a href="account.html" class="center-align"><div class="email user-tendency">jdandturk@gmail.com</div></a> 
+                </div>
+                
+            </div>
+
+            <div class="nav-list white-text">
+                <li>
+                    <a class="waves-effect" href="index.html"><img src="img/ox_off.png">콘텐츠 UV 평가</a>
+                </li>
+                <li>
+                    <a class="waves-effect selected" href="history.html"><img src="img/history_on.png">평가 히스토리</a>
+                </li>
+                <li>
+                    <a class="waves-effect" href="guide.html"><img src="img/guide_off.png">콘텐츠 가이드</a>
+                </li>
+            </div>
+
+            <p class="nav-footer"><img src="img/sidebar_applogo.png"></p>
+          </ul>
+        </div>
+      </nav>
+    
+      <div class="history-wrap ">
+        <div class="section container no-pad-top">
+          <div class="row">
+              <div id="history_list" class="custom-tabs">
+              </div>
+
+              <div id="test4" class="col s12" style="margin-top:50px;">
+                    <div class="history_balloon">
+                      <div><span class="bold">콘텐츠</span> <span id="content"></span></div>
+                      <div><span class="bold">공간유형</span> <span id="space"></span></div>
+                      <div><span class="bold">콘텐츠 조작방식</span> <span id="manual"></span></div>
+                      <div><span class="bold">콘텐츠 표현방식</span> <span id="expression"></span></div>
+                      <div><span class="bold">평가자</span> <span id="userType"></span></div>
+                    </div>
+                    <div class="submenuWrap col s12 m7">
+                        <ul class="history-top-menu">
+                          <span class="submenu active" data-panel="module"><a>모듈</a></span>
+                          <span class="vertical-divider"></span>
+                          <span class="submenu" data-panel="property"><a >속성</a></span>
+                          <span class="history-helper">
+                            <img src="img/question_info_off.png">
+                          </span>
+                        </ul>
+                    </div>
+                    <div id="module" class="submenu-panel module">
+                        <div id="moduleChart" class="chart"></div>
+
+                        <div class="history-info-wrap">
+                          <div class="pros-cons pros bold">
+                            강점 : <span>정보성, 공공성</span>
+                          </div>
+                          <div class="pros-cons cons bold">
+                            약점 : <span>사용성, 표준성</span>
+                          </div>
+                          <div class="description">
+                            상세설명 상세설명 상세설명 상세설명상세설명상세설명상세설명상세설명상세설명상세설명
+                            상세설명상세설명상세설명상세설명상세설명상세설명상세설명상세설명상세설명상세설명
+                          </div>
+                        </div>
+                    </div>
+
+                    <div id="property" class="submenu-panel property">
+                        <div id="propertyChart" class="chart"></div>
+
+                        <div class="history-info-wrap">
+                          <div class="pros-cons pros bold">
+                            강점 : <span>콘텐츠</span>
+                          </div>
+                          <div class="pros-cons cons bold">
+                            약점 : <span>조작방식</span>
+                          </div>
+                          <div class="description">
+                            상세설명 상세설명 상세설명 상세설명상세설명상세설명상세설명상세설명상세설명상세설명
+                            상세설명상세설명상세설명상세설명상세설명상세설명상세설명상세설명상세설명상세설명
+                          </div>
+                        </div>
+                    </div>
+                   
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+      
+    <footer >
+        <div class="no-login">비로그인 상태에서는 최근 평가 기록만 저장됩니다.</div>
+    </footer>
+
+
+  <div class="modal-overlay" style="z-index: 1002; display: none; opacity: 0.5;"></div>
+  <!-- Modal Structure -->
+  <div id="modalGraph" class="modal custom">
+    <div class="modal-content">
+      <h5>그래프 가이드라인</h5>
+      <p class="center-align">
+          <img src="img/popup_graph_2.png" style="width:80%;max-width:400px;"/>
+      </p>
+      
+      <div class="history-modal-description">
+        <div class="">1. 25점 이하의 항목은 <span class="red-text">붉은색</span>으로 표시됩니다.</div>
+        <div class="">2. 75점 이상의 항목은 <span class="blue-text">푸른색</span>으로 표시됩니다.</div>
+        <div class="">3. 평가되지 않은 항목은 <span class="grey-text">회색</span>으로 표시됩니다.</div>
+        <div class="">4. 평가 결과는 <span class="blue-area">푸른색 영역</span>으로 표시됩니다.</div>
+        <div class="">5. 전체 평균은 <span class="grey-area">회색 영역</span>으로 표시됩니다.</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="btn-large evaluate-btn modal-positive modal-close" >확인</a>
+    </div>
+  </div>
+
+  <div id="loading" class="preloading width100 valign-wrapper">
+      <div class="preloader-wrapper active">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div id="historyListTemplate" class="hide">
+      <span class="custom-tab col"><a class="">5월19일(7차)</a></span>
+  </div>
+
+
+<!-- <footer id="complete-button" class="footer-button">
+    <a class="waves-effect waves-light btn-large bold round-blue-btn inactive" href="#">확인</a>
+</footer> -->
+
+
+  <!--  Scripts-->
+  <script src="js/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  
+
+  <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyDyKMGQN_j2SvrOcoefmx7O2OfAfiszEPE",
+      authDomain: "yonsei2019-d11b7.firebaseapp.com",
+      databaseURL: "https://yonsei2019-d11b7.firebaseio.com",
+      projectId: "yonsei2019-d11b7",
+      storageBucket: "",
+      messagingSenderId: "1067485696875",
+      appId: "1:1067485696875:web:77d94c991b4b02d8"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="js/manager.js"></script>
+
+
+
+
+
+  <script>
+   
+    
+    (function onInit() {
+      getResultDateFromDB();
+      
+    })();
+
+    $(document).ready(function(){
+      //$('.modal').modal();
+      $('.tabs').tabs();
+      
+      
+
+      if(sessionStorage.getItem('uid')!=null) {
+        var userId = sessionStorage.getItem('uid');
+        firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
+          //var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+          $(".logininfo").hide();
+          $("div.user-email").text(snapshot.val().email);
+          $("p.user-email").text(snapshot.val().email);
+          $("div.user-tendency").text(snapshot.val().industry + ", " + snapshot.val().technic);
+          $("span.user-industry").addClass('selected').text(snapshot.val().industry);
+          $("span.user-technic").addClass('selected').text(snapshot.val().technic);
+
+          $(".userinfo").show();
+        });
+      } 
+
+      $(".history-helper").click(function() {
+        $(".modal-overlay").show();
+        $("#modalGraph").addClass('active');
+      });
+
+      $(".nav-header .nav-header-close").click(function() {
+        $('.sidenav').sidenav('close');
+      });
+
+      $(".history-top-menu span.submenu").on('click',function() {
+        var panel = $(this).data('panel');
+
+        $(".history-top-menu span.active").removeClass("active");
+        $(this).addClass("active");
+        $(".submenu-panel").hide();
+        $("#"+panel).show();
+      });
+
+
+      document.addEventListener("backbutton", onBackKeyDown, false);
+      function onBackKeyDown() {
+        e.preventDefault();
+        alert("Back press");
+        $("div.pt-page-current .nav-back").trigger('click');
+      };
+
+    });
+    
+  </script>
+
+  </body>
+</html>

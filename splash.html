@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <!-- <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+      
+     
+    </div>
+  </nav> -->
+  <div class="no-pad-bot splash_banner" >
+      <img src="img/splash_bg.png"> 
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+      <!--   Icon Section   -->
+      <div class="row no-mar-bot"> 
+        <div class="splash-content">
+            <p>
+              이 어플리케이션은 2019년도 문화체육관광부의<br>
+              재원으로 한국콘텐츠진흥원의 지원을 받아 제작되었습니다.
+            </p>
+            No.R2017030009 차세대 이동공간 인포테인먼트 콘텐츠 및 인터렉션 개발
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="splash_footer">
+      <div class="progress no-mar-top">
+          <div class="determinate" style="width: 0%"></div>
+      </div>
+      <div class="footer-button center-align">
+          <img src="img/splash_logos.png">
+      </div>
+  </footer>
+
+
+
+
+  <!--  Scripts-->
+  <script src="js/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  <script>
+
+
+    $(document).ready(function(){
+
+      // function loop() {
+
+      //   $('.determinate').animate ({
+      //       width: '+=1000px',
+      //   }, 100, 'linear', function() {
+      //       loop();
+      //   });
+      // }
+      // loop();
+      $('.determinate').animate ({
+            width: '100%',
+        }, 1000);
+
+      setTimeout(function() {
+        location.href="index.html";
+        //alert('move');
+      },2000);
+      
+    });
+    
+  </script>
+
+  </body>
+</html>

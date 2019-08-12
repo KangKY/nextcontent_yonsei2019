@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <!-- <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+      
+     
+    </div>
+  </nav> -->
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <div class="nav-wrapper custom">
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+          <!-- <i class="material-icons">menu</i> -->
+          <img src="img/manu_open_white.png">
+        </a>
+        <ul id="nav-mobile" class="sidenav">
+
+              <div class="nav-header center-align valign-wrapper">
+                  <a href="#" class="nav-header-close"><i class="material-icons">close</i></a>
+
+                  <div class="logininfo width100">
+                      <a class="center-align" href="login.html"><span class="white-text name">로그인해주세요</span></a>
+                  </div>
+                  
+
+                  <div class="userinfo width100">
+                      <a href="account.html" class="center-align"><div class="white-text name user-email"></div></a>
+                      <a href="account.html" class="center-align"><div class="email user-tendency">Loading...</div></a> 
+                  </div>
+                  
+              </div>
+
+            
+              <div class="nav-list white-text">
+                  <li>
+                      <a class="waves-effect selected" href="index.html"><img src="img/ox_on.png">콘텐츠 UV 평가</a>
+                  </li>
+                  <li>
+                      <a class="waves-effect" href="history.html"><img src="img/history_off.png">평가 히스토리</a>
+                  </li>
+                  <li>
+                      <a class="waves-effect" href="guide.html"><img src="img/guide_off.png">콘텐츠 가이드</a>
+                  </li>
+              </div>
+
+              <p class="nav-footer"><img src="img/sidebar_applogo.png"></p>
+        </ul>
+      </div>
+        
+      <!-- <img src="img/evaluation_bg.png"> -->
+
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row no-mar-bot">
+          <ul class="collapsible expandable custom">
+              <li>
+                <div class="collapsible-header">
+                  콘텐츠
+
+                      <span id="content" class="info">해당 없음</span>
+                      <span class="badge"><img src="img/icons/arrow_blue_down.svg"></span>
+
+                </div>
+                <div id="content-body" class="collapsible-body">
+                  <div class="items-wrap">
+                      <div class="col s3 xs3">
+                          <a data-category="tour" class=" btn btn-custom">
+                            <img src="img/icons/selecticon_travel.svg">
+                          </a>
+                          <div class="info-text ">관광</div>
+                        </div>
+      
+                        <div class="col s3 xs3">
+                          <a data-category="game" class=" btn btn-custom">
+                            <img src="img/icons/selecticon_game.svg">
+                          </a>
+                          <div class="info-text ">게임</div>
+                        </div>
+      
+                        <div class="col s3 xs3">
+                          <a data-category="education" class=" btn btn-custom">
+                            <img src="img/icons/selecticon_education.svg">
+                          </a>
+                          <div class="info-text ">교육</div>
+                        </div>
+      
+                        <div class="col s3 xs3">
+                          <a data-category="av" class=" btn btn-custom">
+                            <img src="img/icons/selecticon_av.svg">
+                          </a>
+                          <div class="info-text ">AV</div>
+                        </div>
+      
+                        <div class="col s3 xs3">
+                          <a data-category="therapy" class=" btn btn-custom">
+                            <img src="img/icons/selecticon_therapy.svg">
+                          </a>
+                          <div class="info-text ">테라피</div>
+                        </div>
+      
+                        <div class="col s3 xs3">
+                          <a data-category="advertise" class=" btn btn-custom">
+                            <img src="img/icons/selecticon_ad.svg">
+                          </a>
+                          <div class="info-text ">광고</div>
+                        </div>
+                  </div>
+
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header">
+                  공간유형
+                  <span id="space" class="info">해당 없음</span>
+                  <span class="badge"><img src="img/icons/arrow_blue_down.svg"></span>
+                </div>
+                <div id="space-body" class="collapsible-body">
+                    <div class="items-wrap">
+                        <div class="col s3 xs3">
+                            <a data-category="car" class=" btn btn-custom">
+                              <img src="img/icons/selecticon_car.svg">
+                            </a>
+                            <div class="info-text ">자가용</div>
+                          </div>
+        
+                          <div class="col s3 xs3">
+                            <a data-category="bus" class=" btn btn-custom">
+                              <img src="img/icons/selecticon_bus.svg">
+                            </a>
+                            <div class="info-text ">버스</div>
+                          </div>
+        
+                          <div class="col s3 xs3">
+                            <a data-category="train" class=" btn btn-custom">
+                              <img src="img/icons/selecticon_train.svg">
+                            </a>
+                            <div class="info-text ">기차</div>
+                          </div>
+        
+                          <div class="col s3 xs3">
+                            <a data-category="dron" class=" btn btn-custom">
+                              <img src="img/icons/selecticon_dron.svg">
+                            </a>
+                            <div class="info-text ">드론</div>
+                          </div>
+        
+                    </div>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header">
+                  조작방식
+                  <span id="manual" class="info">해당 없음</span>
+                  <span class="badge"><img src="img/icons/arrow_blue_down.svg"></span>
+                </div>
+                <div id="manual-body" class="collapsible-body">
+                    <div class="items-wrap">
+                        <div class="col s3 xs3">
+                            <a data-category="gesture" class=" btn btn-custom">
+                              <img src="img/icons/selecticon_gesture.svg">
+                            </a>
+                            <div class="info-text ">제스쳐</div>
+                          </div>
+        
+                          <div class="col s3 xs3">
+                            <a data-category="face" class=" btn btn-custom">
+                              <img src="img/icons/selecticon_face.svg">
+                            </a>
+                            <div class="info-text ">얼굴인식</div>
+                          </div>
+        
+                          <div class="col s3 xs3">
+                            <a data-category="eye" class=" btn btn-custom">
+                              <img src="img/icons/selecticon_eyes.svg">
+                            </a>
+                            <div class="info-text ">시선인식</div>
+                          </div>
+        
+                          <div class="col s3 xs3">
+                            <a data-category="voice" class=" btn btn-custom">
+                              <img src="img/icons/selecticon_mouth.svg">
+                            </a>
+                            <div class="info-text ">음성인식</div>
+                          </div>
+        
+                    </div>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header">
+                  표현방식
+                  <span id="expression" class="info">해당 없음</span>
+                  <span class="badge"><img src="img/icons/arrow_blue_down.svg"></span>
+                </div>
+                <div id="expression-body" class="collapsible-body">
+                    <div class="items-wrap">
+                        <div class="col s3 xs3">
+                            <a data-category="ar" class=" btn btn-custom">
+                              <img src="img/icons/selecticon_ar.svg">
+                            </a>
+                            <div class="info-text ">AR</div>
+                          </div>
+        
+                          <div class="col s3 xs3">
+                            <a data-category="vr" class=" btn btn-custom">
+                              <img src="img/icons/selecticon_vr.svg">
+                            </a>
+                            <div class="info-text ">VR</div>
+                          </div>
+        
+                          <div class="col s3 xs3">
+                            <a data-category="hologram" class=" btn btn-custom">
+                              <img src="img/icons/selecticon_hologram.svg">
+                            </a>
+                            <div class="info-text ">홀로그램</div>
+                          </div>
+
+                    </div>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header">
+                  평가자 유형
+                  <span id="userType" class="info">해당 없음</span>
+                  <span class="badge"><img src="img/icons/arrow_blue_down.svg"></span>
+                </div>
+                <div id="userType-body" class="collapsible-body">
+                    <div class="items-wrap">
+                        <div class="col s3 xs3">
+                            <a data-category="planner" class=" btn btn-custom">
+                              <img src="img/icons/selecticon_planner.svg">
+                            </a>
+                            <div class="info-text ">기획자</div>
+                          </div>
+        
+                          <div class="col s3 xs3">
+                            <a data-category="designer" class=" btn btn-custom">
+                              <img src="img/icons/selecticon_designer.svg">
+                            </a>
+                            <div class="info-text ">디자이너</div>
+                          </div>
+        
+                          <div class="col s3 xs3">
+                            <a data-category="developer" class=" btn btn-custom">
+                              <img src="img/icons/selecticon_developer.svg">
+                            </a>
+                            <div class="info-text ">개발자</div>
+                          </div>
+
+                    </div>
+                </div>
+              </li>
+            </ul>
+        <div class="col s12 m4">
+            
+        </div>
+
+   
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer >
+      <div class="footer-button">
+          <a id="modalTest" class="waves-effect waves-light btn-large evaluate-btn bold modal-trigger-custom" href="#modal1">평가 시작</a>
+      </div>
+      <div class="no-login">비로그인 상태에서는 최근 평가 기록만 저장됩니다.</div>
+  </footer>
+
+  
+
+
+  <div class="modal-overlay" style="z-index: 1002; display: none; opacity: 0.5;"></div>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal custom">
+    <div class="modal-content">
+      <h5>서비스 이용 약관</h5>
+      <p class="modal-description">설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트
+          설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트
+          설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트
+          설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트
+          설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트설명 텍스트
+      </p>
+    </div>
+    <div class="modal-footer">
+
+      <a id="btnAgree" class="waves-effect waves-light btn-large evaluate-btn bold modal-close" >동의</a>
+      <a class="modal-negative modal-close">동의하지 않음</a>
+    </div>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="modalHistory" class="modal custom">
+    <div class="modal-content">
+      <h5>진행중인 평가가 있습니다.</h5>
+      <p class="modal-description">
+        아래 [이어서 평가] 버튼을 누르면 진행중인 평가를 이어서 시작할 수 있습니다.
+      </p>
+    </div>
+    <div class="modal-footer">
+
+      <a id="btnOldEvaluate" class="waves-effect waves-light btn-large evaluate-btn bold modal-trigger" href="evaluate.html?process=new">이어서 평가</a>
+      <a id="btnNewEvaluate" class="modal-negative modal-close" >새로운 평가</a>
+    </div>
+  </div>
+
+
+  <!--  Scripts-->
+  <script src="js/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script src="js/init.js"></script>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
+  <script src="js/manager.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#config-web-app -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDyKMGQN_j2SvrOcoefmx7O2OfAfiszEPE",
+      authDomain: "yonsei2019-d11b7.firebaseapp.com",
+      databaseURL: "https://yonsei2019-d11b7.firebaseio.com",
+      projectId: "yonsei2019-d11b7",
+      storageBucket: "",
+      messagingSenderId: "1067485696875",
+      appId: "1:1067485696875:web:77d94c991b4b02d8"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+
+    if(sessionStorage.getItem('uid')!=null) {
+      $(".logininfo").hide();
+      $(".userinfo").show();
+      $("div.user-email").text(sessionStorage.getItem('email'));
+      $(".no-login").hide();
+    } else {
+      $(".no-login").show();
+    }
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log(user);
+      //console.log(firebase.auth().currentUser);
+      if (user) {
+        sessionStorage.setItem('uid', user.uid);
+        firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+          $(".logininfo").hide();
+          $("div.user-email").text(snapshot.val().email);
+          $("div.user-tendency").text(snapshot.val().industry + ", " + snapshot.val().technic);
+          
+          $(".userinfo").show();
+          $(".no-login").hide();
+        });
+      } else {
+          // User is signed out.
+          // ...
+        $(".no-login").show();
+      }
+    });
+
+ 
+
+    
+
+
+    var elem = document.querySelector('.collapsible.expandable');
+    var instance = M.Collapsible.init(elem, {
+      accordion: false
+    });
+
+    $(document).ready(function(){
+      
+      $('.modal').modal();
+
+      
+      $(".nav-header .nav-header-close").click(function() {
+        $('.sidenav').sidenav('close');
+      });
+
+      $(".btn-custom").on('click', function() {
+        $(this).toggleClass('selected');
+        var collapsible_body = $(this).parents('.collapsible-body');
+        var collapsible_head = $(this).parents('.collapsible-body').siblings('.collapsible-header');
+
+        if(collapsible_body.find('a.btn-custom.selected').length > 0 ) {
+          collapsible_head.find('span.info').addClass('selected');
+
+          var textArr = [];
+          collapsible_body.find('a.btn-custom.selected').each(function(idx, item) {
+            textArr.push($(item.nextElementSibling).text());
+          });
+          collapsible_head.find('span.info').text(textArr.join(', '));
+        }
+        else {
+          collapsible_head.find('span.info').removeClass('selected');
+          collapsible_head.find('span.info').text('해당 없음');
+        }
+      });
+
+      $(".collapsible-header").click(function() {
+        var badge =  $(this).find('span.badge').children();
+        if($(this).parent().hasClass('active'))
+          badge.attr('src', 'img/icons/arrow_blue_down.svg');
+        else
+          badge.attr('src', 'img/icons/arrow_blue_up.svg');
+      });
+
+      $("#btnAgree").on('click', function() {
+        if(localStorage.getItem("resulting") != null) {
+          $(".modal-overlay").show();
+          $("#modalHistory").addClass('active');
+        }
+        else  {
+          setSelections();
+          location.href="evaluate.html";
+        }
+      });
+      
+      $("#btnNewEvaluate").click(function() {
+        localStorage.removeItem("resulting");
+        setSelections();
+        location.href="evaluate.html";
+      });
+      
+    });
+
+
+    function setSelections() {
+      localStorage.removeItem('questions');
+      localStorage.removeItem('selections');
+      var content = [];
+      $("#content-body").find('a.btn.selected').each(function(){ content.push($(this).data('category')) });
+
+      var space = [];
+      $("#space-body").find('a.btn.selected').each(function(){ space.push($(this).data('category')) });
+
+      var manual = [];
+      $("#manual-body").find('a.btn.selected').each(function(){ manual.push($(this).data('category')) });
+
+      var expression = [];
+      $("#expression-body").find('a.btn.selected').each(function(){ expression.push($(this).data('category')) });
+
+      var userType = [];
+      $("#userType-body").find('a.btn.selected').each(function(){ userType.push($(this).data('category')) });
+
+      var selectedItem = {
+        'content': content, 
+        'space':space, 
+        'manual':manual, 
+        'expression':expression, 
+        'userType':userType
+      };
+      var selectedItemText = {
+        'content': $("#content").text(), 
+        'space':$("#space").text(), 
+        'manual':$("#manual").text(), 
+        'expression':$("#expression").text(), 
+        'userType':$("#userType").text()
+      };
+
+      localStorage.setItem('questions', JSON.stringify(selectedItem));
+      localStorage.setItem('selections', JSON.stringify(selectedItemText));
+    }
+    
+  </script>
+
+  </body>
+</html>

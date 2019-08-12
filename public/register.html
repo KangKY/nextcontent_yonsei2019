@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <!-- <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+      
+     
+    </div>
+  </nav> -->
+  <!-- <div class="section no-pad-bot no-pad-top" >
+    <div class="container">
+      <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">Logo</a>
+      </div>
+
+    </div>
+    <div class="progress">
+        <div class="determinate" style="width: 70%"></div>
+    </div>
+  </div> -->
+  <div id="main">
+      <nav class="white-nav no-shadow">
+          <div class="nav-wrapper center-align">
+            <a class="nav-title"></a>
+            <a href="#" class="sidenav-close nav-close" ><i class="material-icons bold">close</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="sass.html">Sass</a></li>
+              <li><a href="badges.html">Components</a></li>
+              <li><a href="collapsible.html">Javascript</a></li>
+              <li><a href="mobile.html">Mobile</a></li>
+            </ul>
+          </div>
+          
+        </nav>
+    
+    
+      <div class="container">
+        <div class="section">
+            <span class="vc_bar " data-percentage-value="80" data-value="80" style="background-color: rgb(239, 72, 54); width: 80%;"></span>
+          <!--   Icon Section   -->
+          <div class="row">
+              
+              <div class="col s12 m7">
+                  <div class="userinfo-top-menu">
+                    <span><a href="login.html">로그인</a></span>
+                    <span class="vertical-divider"></span>
+                    <span class="active"><a href="#">회원가입</a></span>
+                  </div>
+              </div>
+
+              <form class="col s12">
+                  <div class="row no-mar-bot">
+                    <div class="input-field col s12">
+                      <input placeholder="이메일주소를 입력해주세요" id="email" type="email" class="validate" autocomplete="false">
+                      <label for="email">이메일</label>
+                      <span class="input-clear">
+                          <img src="img/close_deletetext.png">
+                        </span>
+                      <span class="helper-text" data-error="이메일형식이 아닙니다" data-success=""></span>
+                    </div>
+                  </div>
+
+                  <div class="row no-mar-bot">
+                    <div class="input-field col s12">
+                      <input placeholder="특수문자를 포함하여 6자 이상 10자 이하로 입력해주세요" id="password" type="password" class="validate" >
+                      <label for="password">비밀번호</label>
+                      <span class="helper-text" data-error="특수문자를 포함하여 6자 이상 10자 이하로 입력해주세요" data-success=""></span>
+                    </div>
+                  </div>
+
+                  <div class="row no-mar-bot">
+                    <div class="input-field col s12">
+                      <input placeholder="비밀번호를 확인해주세요" id="passwordConfirm" type="password" class="validate">
+                      <label for="passwordConfirm">비밀번호 확인</label>
+                      <span class="helper-text" data-error="비밀번호가 일치하지 않습니다." data-success=""></span>
+                    </div>
+                  </div>
+
+                  
+                </form>
+          </div>
+    
+        </div>
+      </div>
+
+      <footer id="complete-button" class="footer-button">
+          <a id="btnRegister" class="waves-effect waves-light btn-large bold round-blue-btn inactive" href="#">확인</a>
+      </footer>
+  </div>
+  
+
+ 
+
+
+
+
+  <!-- Modal Structure -->
+  <div id="modalClose" class="modal custom">
+    <div class="modal-content">
+      <h5>평가를 중단하시겠습니까?</h5>
+      <p class="modal-description">
+        중단한 평가는 이후에 이어서 평가가 가능합니다.
+      </p>
+    </div>
+    <div class="modal-footer">
+
+      <a class="btn-large modal-trigger evaluate-btn modal-positive" href="#modal1">평가 재개</a>
+      <a class="modal-negative" href="#modal1">평가 중단</a>
+    </div>
+  </div>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#config-web-app -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDyKMGQN_j2SvrOcoefmx7O2OfAfiszEPE",
+      authDomain: "yonsei2019-d11b7.firebaseapp.com",
+      databaseURL: "https://yonsei2019-d11b7.firebaseio.com",
+      projectId: "yonsei2019-d11b7",
+      storageBucket: "",
+      messagingSenderId: "1067485696875",
+      appId: "1:1067485696875:web:77d94c991b4b02d8"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    var elem = document.querySelector('.collapsible.expandable');
+    var instance = M.Collapsible.init(elem, {
+      accordion: false
+    });
+
+    var passwordRegex = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{6,10}$/g;
+
+    function writeUserData(email, password ) {
+      
+      // $(".preloading").show();
+
+      // var ref = firebase.database().ref("users");
+      // ref.once("value").then(function(snapshot) {
+      //   console.log()
+      // });
+
+      // ref.orderByChild("email").equalTo($("#email").val()).on("child_added", function(snapshot) {
+      //   console.log(snapshot.key);
+      //   if(snapshot.key != null) {
+      //     $("#email").siblings('span.helper-text').attr("data-error",'이미 등록된 이메일주소입니다.');
+      //     $("#email").removeClass("valid").addClass("invalid");
+      //   } else {
+      //     location.href="register_info.html";
+      //   }
+      // });
+
+      firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
+          var user = firebase.auth().currentUser;
+          sessionStorage.setItem('email', email);
+
+          location.href="register_info.html";
+          // firebase.auth().signOut().then(function() {
+            
+          // }).catch(function(error) {
+          //   // An error happened.
+          //   M.toast({html: '오류가 발생하였습니다. <br>다시 시도해주세요.', classes: 'custom', displayLength:2000});
+          // });
+
+      }, function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+
+          if(errorCode == 'auth/email-already-in-use') {
+            $("#email").siblings('span.helper-text').attr("data-error",'이미 등록된 이메일주소입니다.');
+            $("#email").removeClass("valid").addClass("invalid");
+          } else {
+            M.toast({html: '오류가 발생하였습니다. <br>다시 시도해주세요.', classes: 'custom', displayLength:2000});
+          }
+
+          $(".round-blue-btn").addClass('inactive');
+      });
+    }
+
+
+    
+
+    $(document).ready(function(){
+      $('.modal').modal();
+
+      $("#email").on("focusout", function(e) {
+        if($(this).hasClass("valid")) {
+          $("span.input-clear").show();
+        } 
+      });
+
+      $("span.input-clear").click(function() {
+        $("#email").val('');
+      })
+
+      // $("#password").on("keyup", function (e) {
+      //   if(!passwordRegex.test($(this).val())) {
+      //     console.log("regex");
+      //     $("#password").removeClass("valid").addClass("invalid");
+      //   }
+      //   else if ($(this).val() != $("#passwordConfirm").val()) {
+      //     $("#passwordConfirm").removeClass("valid").addClass("invalid");
+      //   } 
+      //   else {
+      //     $("#passwordConfirm").removeClass("invalid").addClass("valid");
+      //   }
+      // });
+      // $("#password").on("focusout", function (e) {
+      //   console.log('focusout');
+      //   console.log($(this).val());
+      //   if(!passwordRegex.test($(this).val())) {
+      //     console.log("regex");
+      //     $("#password").removeClass("valid").addClass("invalid");
+      //   }
+      //   else if ($(this).val() != $("#passwordConfirm").val()) {
+      //     $("#passwordConfirm").removeClass("valid").addClass("invalid");
+      //   } 
+      //   else {
+      //     $("#passwordConfirm").removeClass("invalid").addClass("valid");
+      //   }
+      // });
+
+      $("#password").on("blur", function (e) {
+        if(!passwordRegex.test($(this).val())) {
+          console.log("regex");
+          $("#password").removeClass("valid").addClass("invalid");
+        }
+        else if ($(this).val() != $("#passwordConfirm").val()) {
+          $("#passwordConfirm").removeClass("valid").addClass("invalid");
+        } 
+        else {
+          $("#passwordConfirm").removeClass("invalid").addClass("valid");
+        }
+      });
+
+
+
+      $("#passwordConfirm").on("keyup", function (e) {
+        if ($("#password").val() != $(this).val()) {
+          $(this).removeClass("valid").addClass("invalid");
+        } else {
+          $(this).removeClass("invalid").addClass("valid");
+        }
+      });
+
+      $("#passwordConfirm").on("blur", function (e) {
+        
+        if ($("#password").val() != $(this).val()) {
+          $(this).removeClass("valid").addClass("invalid");
+        } else {
+          $(this).removeClass("invalid").addClass("valid");
+        }
+      });
+
+      $("input.validate").on("keyup",function() {
+        //console.log($(".validate.valid").length);
+        if($(".validate.valid").length == 3) {
+          $(".round-blue-btn").removeClass('inactive');
+        }
+        else {
+          if($(".round-blue-btn").hasClass('inactive') == false) {
+            $(".round-blue-btn").addClass('inactive');
+          }
+        }
+      });
+
+      $("#btnRegister").click(function(){
+        if($(this).hasClass('inactive')) {
+
+        } else {
+          writeUserData($("#email").val(), $("#password").val()); 
+        } 
+      });
+
+      $(".nav-close").on('click', function() {
+        location.href="index.html";
+      });
+
+    });
+  </script>
+
+  </body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <!-- <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+      
+     
+    </div>
+  </nav> -->
+  <!-- <div class="section no-pad-bot no-pad-top" >
+    <div class="container">
+      <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">Logo</a>
+      </div>
+
+    </div>
+    <div class="progress">
+        <div class="determinate" style="width: 70%"></div>
+    </div>
+  </div> -->
+  <div id="main">
+      <nav class="white-nav no-shadow">
+          <div class="nav-wrapper center-align">
+            <a class="nav-title"></a>
+            <a href="#" class="sidenav-close nav-close" ><i class="material-icons bold">close</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="sass.html">Sass</a></li>
+              <li><a href="badges.html">Components</a></li>
+              <li><a href="collapsible.html">Javascript</a></li>
+              <li><a href="mobile.html">Mobile</a></li>
+            </ul>
+          </div>
+          
+        </nav>
+    
+    
+      <div class="container">
+        <div class="section">
+            <span class="vc_bar " data-percentage-value="80" data-value="80" style="background-color: rgb(239, 72, 54); width: 80%;"></span>
+          <!--   Icon Section   -->
+          <div class="row">
+              
+              <div class="col s12 m7">
+                  <div class="userinfo-top-menu">
+                    <span class="active"><a href="#">로그인</a></span>
+                    <span class="vertical-divider"></span>
+                    <span ><a href="register.html">회원가입</a></span>
+                  </div>
+              </div>
+
+              <form class="col s12" autocomplete="off">
+                <div class="row no-mar-bot">
+                  <div class="input-field col s12">
+                    <input placeholder="이메일주소를 입력해주세요" id="email" type="email" class="validate" autocomplete="false">
+                    <label for="email">이메일</label>
+                    <span class="input-clear">
+                        <img src="img/close_deletetext.png">
+                      </span>
+                    <span class="helper-text" data-error="이메일형식이 아닙니다" data-success=""></span>
+                  </div>
+                </div>
+
+                <div class="row no-mar-bot">
+                  <div class="input-field col s12">
+                    <input placeholder="비밀번호를 입력해주세요" id="password" type="password" class="validate" >
+                    <label for="password">비밀번호</label>
+                    <span class="helper-text" data-error="비밀번호가 일치하지 않습니다" data-success=""></span>
+                  </div>
+                </div>
+
+                <div class="row no-mar-bot">
+                  <p class="password-find">
+                    <a href="password_find.html">비밀번호 찾기</a>
+                  </p>
+                </div>
+                
+              </form>
+          </div>
+    
+        </div>
+      </div>
+
+      <footer id="complete-button" class="footer-button">
+          <a id="btnLogin" class="waves-effect waves-light btn-large bold round-blue-btn inactive" href="#">확인</a>
+      </footer>
+  </div>
+  
+
+ 
+
+
+
+
+  <!-- Modal Structure -->
+  <div id="modalClose" class="modal custom">
+    <div class="modal-content">
+      <h5>평가를 중단하시겠습니까?</h5>
+      <p class="modal-description">
+        중단한 평가는 이후에 이어서 평가가 가능합니다.
+      </p>
+    </div>
+    <div class="modal-footer">
+
+      <a class="btn-large modal-trigger evaluate-btn modal-positive" href="#modal1">평가 재개</a>
+      <a class="modal-negative" href="#modal1">평가 중단</a>
+    </div>
+  </div>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDyKMGQN_j2SvrOcoefmx7O2OfAfiszEPE",
+      authDomain: "yonsei2019-d11b7.firebaseapp.com",
+      databaseURL: "https://yonsei2019-d11b7.firebaseio.com",
+      projectId: "yonsei2019-d11b7",
+      storageBucket: "",
+      messagingSenderId: "1067485696875",
+      appId: "1:1067485696875:web:77d94c991b4b02d8"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    var elem = document.querySelector('.collapsible.expandable');
+    var instance = M.Collapsible.init(elem, {
+      accordion: false
+    });
+
+    //var passwordRegex = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,10}$/;
+    var passwordRegex = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{6,10}$/g;
+
+
+    function signInWithEmailAndPassword(email, password) {
+      firebase.auth().signInWithEmailAndPassword(email, password).then(function(user) {
+          var user = firebase.auth().currentUser;
+          sessionStorage.setItem('email', email);
+          sessionStorage.setItem('uid', user.uid);
+          location.href="index.html";
+          // firebase.auth().signOut().then(function() {
+            
+          // }).catch(function(error) {
+          //   // An error happened.
+          //   M.toast({html: '오류가 발생하였습니다. <br>다시 시도해주세요.', classes: 'custom', displayLength:2000});
+          // });
+
+      }, function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(error.code);
+        if (errorCode == 'auth/wrong-password') {
+          //alert('Wrong password.');
+          $("#password").siblings('span.helper-text').attr("data-error",'비밀번호가 일치하지 않습니다');
+          $("#password").removeClass("valid").addClass("invalid");
+        } 
+        else if(errorCode == 'auth/user-not-found') {
+          $("#email").siblings('span.helper-text').attr("data-error",'등록되지 않은 이메일주소입니다');
+          $("#email").removeClass("valid").addClass("invalid");
+        }
+        else {
+          console.log(errorCode);
+          console.log(errorMessage);
+        }
+      });
+
+
+    }
+
+    $(document).ready(function(){
+      $('.modal').modal();
+
+      $("#email").on("focusout", function(e) {
+        if($(this).hasClass("valid")) {
+          console.log("valid!");
+          $("span.input-clear").show();
+        }
+
+      });
+
+      $("span.input-clear").click(function() {
+        $("#email").val('');
+      })
+
+      // $("#password").on("focusout", function (e) {
+      //   if ($(this).val() != $("#passwordConfirm").val()) {
+      //       $("#passwordConfirm").removeClass("valid").addClass("invalid");
+      //   } else {
+      //       $("#passwordConfirm").removeClass("invalid").addClass("valid");
+      //   }
+      // });
+
+      // $("#passwordConfirm").on("keyup", function (e) {
+      //   if ($("#password").val() != $(this).val()) {
+      //     $(this).removeClass("valid").addClass("invalid");
+      //   } else {
+      //     $(this).removeClass("invalid").addClass("valid");
+      //   }
+      // });
+
+      $("input.validate").on("keyup",function() {
+        if($(".validate.valid").length == 2) {
+          $(".round-blue-btn").removeClass('inactive');
+        }
+        else {
+          if($(".round-blue-btn").hasClass('inactive') == false) {
+            $(".round-blue-btn").addClass('inactive');
+          }
+        }
+      });
+
+      $("#btnLogin").click(function(){
+        if($(this).hasClass('inactive')) {
+
+        } else {
+          signInWithEmailAndPassword($("#email").val(), $("#password").val());
+        } 
+      });
+
+
+      $(".nav-close").on('click', function() {
+        location.href="index.html";
+      });
+
+    });
+  </script>
+
+  </body>
+</html>

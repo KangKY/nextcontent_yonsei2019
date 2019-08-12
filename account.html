@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+
+<div id="pt-main" class="pt-perspective">
+
+    <div id="main" class="content-from-right pt-page pt-page-current">
+
+      <div class="section no-pad-bot" >
+          <div class="container">
+            <div class="nav-wrapper custom">
+              <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+                <!-- <i class="material-icons">menu</i> -->
+                <img src="img/manu_open_black.png">
+              </a>
+              <ul id="nav-mobile" class="sidenav">
+      
+                  <div class="nav-header center-align valign-wrapper">
+                      <a href="#" class="nav-header-close"><i class="material-icons">close</i></a>
+    
+                      <div class="logininfo width100">
+                          <a class="center-align" href="login.html"><span class="white-text name">로그인해주세요</span></a>
+                      </div>
+                      
+    
+                      <div class="userinfo width100">
+                          <a href="account.html" class="center-align"><div class="white-text name user-email">John Doe</div></a>
+                          <a href="account.html" class="center-align"><div class="email user-tendency">jdandturk@gmail.com</div></a> 
+                      </div>
+                      
+                  </div>
+      
+                  
+                    <div class="nav-list white-text">
+                        <li>
+                            <a class="waves-effect" href="index.html"><img src="img/ox_off.png">콘텐츠 UV 평가</a>
+                        </li>
+                        <li>
+                            <a class="waves-effect" href="history.html"><img src="img/history_off.png">평가 히스토리</a>
+                        </li>
+                        <li>
+                            <a class="waves-effect" href="guide.html"><img src="img/guide_off.png">콘텐츠 가이드</a>
+                        </li>
+                    </div>
+      
+                    <p class="nav-footer"><img src="img/sidebar_applogo.png"></p>
+              </ul>
+            </div>           
+            <!-- <img src="img/evaluation_bg.png"> -->
+          </div>
+        </div>
+    
+      <div class="container">
+        <div class="section">
+          <div class="row">
+              <div class="col s12 m7">
+                  <div class="userinfo-top-menu">
+                      <div class="title bold">계정관리</div>
+                      <p class="user-email password-find-info">
+                        
+                      </p>
+                  </div>
+              </div>
+    
+              <ul class="collapsible custom">
+                  <li>
+                    <div id="industry_info" class="collapsible-header" data-detail="industry">
+                      산업
+                      <span class="user-industry info interaction">해당 없음</span>
+                      <span class="badge interaction"><img src="img/arrow_blue_right.png"></span>
+                    </div>
+
+                  </li>
+                  <li>
+                    <div id="technic_info" class="collapsible-header"  data-detail="technic">
+                      기술
+                      <span class="user-technic info interaction">해당 없음</span>
+                      <span class="badge interaction"><img src="img/arrow_blue_right.png"></span>
+                    </div>
+
+                  </li>
+
+                  <li>
+                    <div id="technic_info" class="collapsible-header"  data-detail="technic">
+                      비밀번호 변경
+                      <a href="password_change.html"><span class="badge"><img src="img/arrow_blue_right.png"></span></a>
+                    </div>
+                  </li>
+                  <li>
+                    <div id="technic_info" class="collapsible-header no-bor-bot"  data-detail="technic">
+                      <a class="modal-trigger-custom" href="#modalLogout">로그아웃</a>
+                    </div>
+                  </li>
+
+                </ul>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+      
+      
+      
+    <div id="industry_main" class="content-from-right pt-page ">
+      <nav class="white-nav no-shadow">
+        <div class="nav-wrapper center-align">
+          <a href="#" class="sidenav-back nav-back" ><i class="material-icons bold">arrow_back</i></a>
+          <a class="nav-title">산업 설정</a>
+          <a href="#" class="sidenav-close nav-close" ><i class="material-icons bold">close</i></a>
+
+        </div>
+      </nav>
+    
+      <div class="container">
+        <div class="section">
+          <div class="row">
+              <ul class="collapsible custom register-info-list">
+                  <li>
+                    <div class="collapsible-header">
+                      출판
+                      <img class="check" src="img/check.png">
+
+                      <span class="register-helper">
+                        <img src="img/question_info_off.png">
+                      </span>
+                    </div>
+                    <div class="balloon"> 
+                        e-book (만화 제외), 온라인 잡지 및 정기간행물, 온라인 신문, 웹 소설 등
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="collapsible-header">
+                      만화
+                      <img class="check" src="img/check.png">
+
+                      <span class="register-helper">
+                        <img src="img/question_info_off.png">
+                      </span>
+                    </div>
+                    <div class="balloon"> 
+                        온라인 만화, 웹툰 등
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="collapsible-header">
+                      음악
+                      <img class="check" src="img/check.png">
+
+                      <span class="register-helper">
+                        <img src="img/question_info_off.png">
+                      </span>
+                    </div>
+                    <div class="balloon"> 
+                        음반 듣기, 노래연습 등
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="collapsible-header">
+                      영화
+                      <img class="check" src="img/check.png">
+
+                      <span class="register-helper">
+                        <img src="img/question_info_off.png">
+                      </span>
+                    </div>
+                    <div class="balloon"> 
+                        세부항목 없음
+                    </div>
+                  </li>
+                  <li>
+                    <div class="collapsible-header">
+                      게임
+                      <img class="check" src="img/check.png">
+
+                      <span class="register-helper">
+                        <img src="img/question_info_off.png">
+                      </span>
+                    </div>
+                    <div class="balloon"> 
+                        온라인 게임, 가상, 증강, 혼합현실 게임 등
+                    </div>
+                  </li>
+                  <li>
+                    <div class="collapsible-header">
+                      애니메이션
+                      <img class="check" src="img/check.png">
+
+                      <span class="register-helper">
+                        <img src="img/question_info_off.png">
+                      </span>
+                    </div>
+                    <div class="balloon"> 
+                        텔레비전 애니메이션, 영화 등
+                    </div>
+                  </li>
+                  <li>
+                    <div class="collapsible-header">
+                      방송
+                      <img class="check" src="img/check.png">
+
+                      <span class="register-helper">
+                        <img src="img/question_info_off.png">
+                      </span>
+                    </div>
+                    <div class="balloon"> 
+                        라디오, 보도, 교양, 오락, 인터넷방송 등
+                    </div>
+                  </li>
+                  <li>
+                    <div class="collapsible-header ">
+                      캐릭터
+                      <img class="check" src="img/check.png">
+
+                      <span class="register-helper">
+                        <img src="img/question_info_off.png">
+                      </span>
+                    </div>
+                    <div class="balloon"> 
+                        모바일 캐릭터 등
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="collapsible-header ">
+                      광고
+                      <img class="check" src="img/check.png">
+
+                      <span class="register-helper">
+                        <img src="img/question_info_off.png">
+                      </span>
+                    </div>
+                    <div class="balloon"> 
+                        메체 광고 등
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="collapsible-header ">
+                      공연
+                      <img class="check" src="img/check.png">
+
+                      <span class="register-helper">
+                        <img src="img/question_info_off.png">
+                      </span>
+                    </div>
+                    <div class="balloon"> 
+                        연극, 무용 및 음악 등
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="collapsible-header ">
+                      지식정보
+                      <img class="check" src="img/check.png">
+
+                      <span class="register-helper">
+                        <img src="img/question_info_off.png">
+                      </span>
+                    </div>
+                    <div class="balloon"> 
+                        포털, e-learning, 정보전문정보 등
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="collapsible-header ">
+                      생산
+                      <img class="check" src="img/check.png">
+
+                      <span class="register-helper">
+                        <img src="img/question_info_off.png">
+                      </span>
+                    </div>
+                    <div class="balloon"> 
+                        창작, 앱 제작 등
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="collapsible-header ">
+                      관광
+                      <img class="check" src="img/check.png">
+
+                      <span class="register-helper">
+                        <img src="img/question_info_off.png">
+                      </span>
+                    </div>
+                    <div class="balloon"> 
+                        세부항목 없음
+                    </div>
+                  </li>
+                  
+
+              </ul>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  
+  
+  
+  
+  
+    <div id="technic_main" class="content-from-right pt-page">
+      <nav class="white-nav no-shadow">
+        <div class="nav-wrapper center-align">
+          <a href="#" class="sidenav-back nav-back" ><i class="material-icons bold">arrow_back</i></a>
+          <a class="nav-title">기술 설정</a>
+          <a href="#" class="sidenav-close nav-close" ><i class="material-icons bold">close</i></a>
+
+        </div>
+      </nav>
+    
+      <div class="container">
+        <div class="section">
+          <div class="row">
+            <ul class="collapsible custom register-info-list">
+                <li>
+                  <div class="collapsible-header">
+                    인지/감성과학
+                    <img class="check" src="img/check.png">
+
+                    <span class="register-helper">
+                      <img src="img/question_info_off.png">
+                    </span>
+                  </div>
+                  <div class="balloon"> 
+                      감각/지각/주의 정보처리, 운동조절 정보처리, 학습/기억 정보처리, 언어 정보처리, 고등사고 정보처리,
+                      인지신경 정보처리, 응용 인지과학, 감성인지 등
+                  </div>
+                </li>
+
+                <li>
+                  <div class="collapsible-header">
+                    뇌인지/공학
+                    <img class="check" src="img/check.png">
+
+                    <span class="register-helper">
+                      <img src="img/question_info_off.png">
+                    </span>
+                  </div>
+                  <div class="balloon"> 
+                      뇌신호의 측정 및 분석, 뇌기능의 계산모델, 뇌기반 지능시스템, 뇌-기계 인터페이스, 시스템신경과학, 행동신경과학, 뇌인지 기능매핑 등
+                  </div>
+                </li>
+
+                <li>
+                  <div class="collapsible-header">
+                    디지털 콘텐츠
+                    <img class="check" src="img/check.png">
+
+                    <span class="register-helper">
+                      <img src="img/question_info_off.png">
+                    </span>
+                  </div>
+                  <div class="balloon"> 
+                      디지털 영상, 디지털 음악/음향처리, 융합형 콘텐츠 등
+                  </div>
+                </li>
+
+                <li>
+                  <div class="collapsible-header">
+                    가상현실/가상세계
+                    <img class="check" src="img/check.png">
+
+                    <span class="register-helper">
+                      <img src="img/question_info_off.png">
+                    </span>
+                  </div>
+                  <div class="balloon"> 
+                      AR, VR, MR, 홀로그램 등
+                  </div>
+                </li>
+
+                <li>
+                  <div class="collapsible-header">
+                    기타
+                    <img class="check" src="img/check.png">
+
+                    <span class="register-helper">
+                      <img src="img/question_info_off.png">
+                    </span>
+                  </div>
+                  <div class="balloon"> 
+                      달리 분류되지 않는 기타 기술
+                  </div>
+                </li>
+
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+</div>
+
+<!-- <footer id="complete-button" class="footer-button">
+    <a class="waves-effect waves-light btn-large bold round-blue-btn inactive" href="#">확인</a>
+</footer> -->
+
+
+
+<div class="modal-overlay" style="z-index: 1002; display: none; opacity: 0.5;"></div>
+  <!-- Modal Structure -->
+  <div id="modalLogout" class="modal custom">
+    <div class="modal-content">
+      <h5>로그아웃 하시겠습니까?</h5>
+      <p class="modal-description">
+        로그아웃 버튼을 누르시면<br>
+        평가 콘텐츠 기록을 볼 수 없습니다.
+      </p>
+    </div>
+    <div class="modal-footer">
+
+      <a class="btn-large evaluate-btn modal-positive modal-close" href="#">취소</a>
+      <a class="modal-negative" id="btnLogout">로그아웃</a>
+    </div>
+  </div>
+
+  <div id="loading" class="preloading width100 valign-wrapper">
+    <div class="preloader-wrapper active">
+      <div class="spinner-layer spinner-blue-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--  Scripts-->
+  <script src="js/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
+
+  <script src="js/manager.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDyKMGQN_j2SvrOcoefmx7O2OfAfiszEPE",
+      authDomain: "yonsei2019-d11b7.firebaseapp.com",
+      databaseURL: "https://yonsei2019-d11b7.firebaseio.com",
+      projectId: "yonsei2019-d11b7",
+      storageBucket: "",
+      messagingSenderId: "1067485696875",
+      appId: "1:1067485696875:web:77d94c991b4b02d8"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    var elem = document.querySelector('.collapsible.expandable');
+    var instance = M.Collapsible.init(elem, {
+      accordion: false
+    });
+
+    jQuery.fn.justtext = function() {
+      return $(this).clone()
+          .children()
+          .remove()
+          .end()
+          .text().trim();
+    };
+
+    // firebase.auth().onAuthStateChanged(function(user) {
+    //   if (user) {
+    //     $(".logininfo").hide();
+    //     $("span.user-email").text(user.email);
+    //     $(".userinfo").show();
+    //     $(".no-login").hide();
+    //   } else {
+    //       // User is signed out.
+    //       // ...
+    //   }
+    // });
+    
+
+    $(document).ready(function(){
+      $('.modal').modal();
+      if(sessionStorage.getItem('uid')!=null) {
+        $(".preloading").show();
+
+        var userId = sessionStorage.getItem('uid');
+        firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
+          //var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+          $(".logininfo").hide();
+          $("div.user-email").text(snapshot.val().email);
+          $("p.user-email").text(snapshot.val().email);
+          $("div.user-tendency").text(snapshot.val().industry + ", " + snapshot.val().technic);
+          $("span.user-industry").addClass('selected').text(snapshot.val().industry);
+          $("span.user-technic").addClass('selected').text(snapshot.val().technic);
+          $(".preloading").hide();
+          $(".userinfo").show();
+        });
+      } 
+
+
+      $("#btnLogout").click(function() {
+        firebase.auth().signOut().then(function() {
+          sessionStorage.clear();
+          location.href="index.html";
+        }).catch(function(error) {
+          // An error happened.
+        });
+      })
+
+      $(".nav-header .nav-header-close").click(function() {
+        $('.sidenav').sidenav('close');
+      });
+
+      $("#main ul li div.collapsible-header span").on('click',function() {
+        var detail_name = $(this).parent().data('detail');
+        
+        $("#"+detail_name+"_main").addClass('pt-page-current').css({ 'left': '100%' }).animate({
+          'left' : '0%'    
+        },300,'linear',function() {
+          $("#main").removeClass('pt-page-current');
+        });     
+      });
+
+
+      $(".register-helper img").on('click',function(e) {
+        e.preventDefault();
+        var basic = 'img/question_info_off.png'
+        var close = 'img/icons/question_info_on.svg';
+        $(this).attr("src",  ($(this).attr("src")==basic? close : basic));
+        $(this).closest("div.collapsible-header").toggleClass("no-bor-bot");
+        $(this).closest("div.collapsible-header").next('div.balloon').slideToggle();
+        e.stopPropagation()
+      });
+
+
+      $("ul.register-info-list .collapsible-header").click(function(e) {
+          e.preventDefault();
+          $(".collapsible-header.selected").removeClass("selected");
+          $(this).toggleClass("selected");
+      });
+
+      $(".nav-back").on('click',function() {
+
+        var detail_name = $(this).parents('div.pt-page').attr('id');
+        var selected = $("#"+detail_name).find("ul.register-info-list .collapsible-header.selected").justtext();
+
+        $("#main").addClass('pt-page-current');
+        $("#"+detail_name).css({ 'left': '0%' }).animate({
+          'left' : '100%'    
+        },300,'linear',function() {
+          if(selected != "") {
+            if(detail_name == "industry_main") {
+              $("#industry_info .info").addClass("selected").text(selected);
+              //M.toast({html: '산업 설정이 변경되었습니다.', classes: 'custom', displayLength:2000});
+            }
+             
+            else if(detail_name == "technic_main") {
+              $("#technic_info .info").addClass("selected").text(selected);
+              
+            }  
+            updateRegisterInfoToDB(selected, detail_name, function(msg) {
+              onUpdateToast(msg);
+              $("#"+detail_name).removeClass('pt-page-current');
+            });
+          }
+        });     
+      });
+
+      document.addEventListener("backbutton", onBackKeyDown, false);
+
+      function onBackKeyDown() {
+        e.preventDefault();
+        alert("Back press");
+        $("div.pt-page-current .nav-back").trigger('click');
+      };
+
+      function onUpdateToast(msg) {
+        M.toast({html: msg, classes: 'custom', displayLength:2000});
+      }
+
+
+      $(".nav-close").on('click', function() {
+        location.href="index.html";
+      });
+
+    });
+    
+  </script>
+
+  </body>
+</html>
