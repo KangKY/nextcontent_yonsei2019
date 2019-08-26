@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
+  <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Starter Template - Materialize</title>
@@ -21,47 +22,47 @@
           <a href="#" data-target="nav-mobile" class="sidenav-trigger" style="    padding-top: 10px;">
               <img src="img/icons/manu_open_black.svg">
           </a>
-
-          <ul id="nav-mobile" class="sidenav">
-            <div class="nav-header center-align valign-wrapper">
-                <a href="#" class="nav-header-close"><i class="material-icons">close</i></a>
-
-                <div class="logininfo width100">
-                    <a class="center-align" href="login.html"><span class="white-text name">로그인해주세요</span></a>
-                </div>
-                
-
-                <div class="userinfo width100">
-                    <a href="account.html" class="center-align"><div class="white-text name user-email">John Doe</div></a>
-                    <a href="account.html" class="center-align"><div class="email user-tendency">jdandturk@gmail.com</div></a> 
-                </div>
-                
-            </div>
-
-            <div class="nav-list white-text">
-                <li>
-                    <a class="waves-effect" href="index.html"><img src="img/ox_off.png">콘텐츠 UV 평가</a>
-                </li>
-                <li>
-                    <a class="waves-effect selected" href="history.html"><img src="img/history_on.png">평가 히스토리</a>
-                </li>
-                <li>
-                    <a class="waves-effect" href="guide.html"><img src="img/guide_off.png">콘텐츠 가이드</a>
-                </li>
-            </div>
-
-            <p class="nav-footer"><img src="img/sidebar_applogo.png"></p>
-          </ul>
+        </div>
+        <nav class="history_list_nav fixed-nav white-nav no-shadow"></nav>
+        <div id="history_list" class="custom-tabs">
         </div>
       </nav>
-    
+      <ul id="nav-mobile" class="sidenav">
+        <div class="nav-header center-align valign-wrapper">
+            <a href="#" class="nav-header-close"><i class="material-icons">close</i></a>
+
+            <div class="logininfo width100">
+                <a class="center-align" href="login.html"><span class="white-text name">로그인해주세요</span></a>
+            </div>
+            
+
+            <div class="userinfo width100">
+                <a href="account.html" class="center-align"><div class="white-text name user-email">John Doe</div></a>
+                <a href="account.html" class="center-align"><div class="email user-tendency">jdandturk@gmail.com</div></a> 
+            </div>
+            
+        </div>
+
+        <div class="nav-list white-text">
+            <li>
+                <a class="waves-effect" href="index.html"><img src="img/icons/ox_off.svg">콘텐츠 UV 평가</a>
+            </li>
+            <li>
+                <a class="waves-effect selected" href="history.html"><img src="img/icons/history_on.svg">평가 히스토리</a>
+            </li>
+            <li>
+                <a class="waves-effect" href="guide.html"><img src="img/icons/guide_off.svg">콘텐츠 가이드</a>
+            </li>
+        </div>
+
+        <p class="nav-footer"><img src="img/sidebar_applogo.png"></p>
+      </ul>
       <div class="history-wrap ">
         <div class="section container no-pad-top">
           <div class="row">
-              <div id="history_list" class="custom-tabs">
-              </div>
+            
 
-              <div id="test4" class="col s12" style="margin-top:50px;">
+              <div id="test4" class="col s12" style="margin-top:60px;">
                     <div class="history_balloon">
                       <div><span class="bold">콘텐츠</span> <span id="content"></span></div>
                       <div><span class="bold">공간유형</span> <span id="space"></span></div>
@@ -79,19 +80,24 @@
                           </span>
                         </ul>
                     </div>
-                    <div id="module" class="submenu-panel module">
-                        <div id="moduleChart" class="chart"></div>
 
-                        <div class="history-info-wrap">
+
+                    <div id="module" class="submenu-panel module">
+                        <div id="moduleChart" class="chart hidden"></div>
+
+                        <div class="history_loading center-align">
+                          <img src="img/history_loading_1.png">
+                          <img src="img/history_loading_2.png">
+                        </div>
+                        <div class="history-info-wrap hidden">
                           <div class="pros-cons pros bold">
-                            강점 : <span>정보성, 공공성</span>
+                            강점 : <span></span>
                           </div>
                           <div class="pros-cons cons bold">
-                            약점 : <span>사용성, 표준성</span>
+                            약점 : <span></span>
                           </div>
                           <div class="description">
-                            상세설명 상세설명 상세설명 상세설명상세설명상세설명상세설명상세설명상세설명상세설명
-                            상세설명상세설명상세설명상세설명상세설명상세설명상세설명상세설명상세설명상세설명
+                            
                           </div>
                         </div>
                     </div>
@@ -101,14 +107,18 @@
 
                         <div class="history-info-wrap">
                           <div class="pros-cons pros bold">
-                            강점 : <span>콘텐츠</span>
+                            강점 : <span></span>
                           </div>
                           <div class="pros-cons cons bold">
-                            약점 : <span>조작방식</span>
+                            약점 : <span></span>
                           </div>
                           <div class="description">
-                            상세설명 상세설명 상세설명 상세설명상세설명상세설명상세설명상세설명상세설명상세설명
-                            상세설명상세설명상세설명상세설명상세설명상세설명상세설명상세설명상세설명상세설명
+                            <div class="description_title">
+
+                            </div>
+                            <div class="description_desc">
+
+                            </div>
                           </div>
                         </div>
                     </div>
@@ -135,15 +145,15 @@
       </p>
       
       <div class="history-modal-description">
-        <div class="">1. 25점 이하의 항목은 <span class="red-text">붉은색</span>으로 표시됩니다.</div>
-        <div class="">2. 75점 이상의 항목은 <span class="blue-text">푸른색</span>으로 표시됩니다.</div>
+        <div class="">1. 20점 이하의 항목은 <span class="red-text">붉은색</span>으로 표시됩니다.</div>
+        <div class="">2. 80점 이상의 항목은 <span class="blue-text">푸른색</span>으로 표시됩니다.</div>
         <div class="">3. 평가되지 않은 항목은 <span class="grey-text">회색</span>으로 표시됩니다.</div>
         <div class="">4. 평가 결과는 <span class="blue-area">푸른색 영역</span>으로 표시됩니다.</div>
         <div class="">5. 전체 평균은 <span class="grey-area">회색 영역</span>으로 표시됩니다.</div>
       </div>
     </div>
     <div class="modal-footer">
-      <a class="btn-large evaluate-btn modal-positive modal-close" >확인</a>
+      <a class="btn-large evaluate-btn modal-positive modal-close width100" >확인</a>
     </div>
   </div>
 

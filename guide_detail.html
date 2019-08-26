@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
+    <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Starter Template - Materialize</title>
@@ -12,87 +13,53 @@
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-  <!-- <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo">Logo</a>
-      
-     
-    </div>
-  </nav> -->
-  <!-- <div class="section no-pad-bot no-pad-top" >
-    <div class="container">
-      <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Logo</a>
-      </div>
-
-    </div>
-    <div class="progress">
-        <div class="determinate" style="width: 70%"></div>
-    </div>
-  </div> -->
   <div id="main">
       <nav class="fixed-nav white-nav">
-          <div class="nav-wrapper center-align">
-            <a class="nav-title">차세대 이동공간 콘텐츠 가이드</a>
-            <a href="index.html" class="sidenav-close" ><i class="material-icons bold">close</i></a>
-
-          </div>
-
-        </nav>
+        <div class="nav-wrapper center-align">
+          <a class="nav-title">차세대 이동공간 콘텐츠 가이드</a>
+          <a href="guide.html" class="sidenav-close" ><i class="material-icons bold">close</i></a>
+        </div>
+      </nav>
     
     
-      <div class="evaluate-wrap container">
-        <div class="section">
-          <!--   Icon Section   -->
-          <div class="row">
+      <div class="evaluate-wrap no-pad-bot">
+        <div class="section no-pad-bot">
+          <div id="guideList" class="row no-mar-bot">
               
-              <div class="col s12 m7">
-    
-            
-                  <div class="guide-title">
-                    타이틀타이틀타이틀타이틀
-                  </div>
-
-                  <div class="guide-subtitle">
-                    가이드라인
-                  </div>
-                  <div id="guide-line" class="guide-text ">
-                    상세설명
-                  </div>
-
-                  <div class="guide-subtitle">
-                      UI 지침
-                  </div>
-                  <div id="ui-indicator" class="guide-text ">
-                    상세설명
-                  </div>
-    
-
-                  <div class="guide-subtitle">
-                    UI 사례
-                  </div>
-                  <div id="ui-example" class="guide-text ">
-                    상세설명
-                  </div>
-
-                  <div class="guide-subtitle">
-                     상세내용
-                  </div>
-                  <div id="detail" class="guide-text ">
-                    상세설명
-                  </div>   
-    
-    
-              </div>
+              
           </div>
-    
         </div>
       </div>
   </div>
   
 
-  <footer id="complete-button" class="footer-btn-fixed hide">
-      <a id="btnEvaluateComplete" class="waves-effect waves-light btn-large evaluate-btn bold">평가 완료</a>
-  </footer>
+  <div id="guideTemplate" class="hide">
+      <div class="col s12">   
+          <div class="guideline">
+            타이틀타이틀타이틀타이틀
+          </div>
+          <div id="recommendList">
+            
+          </div> 
+      </div>
+      <div class="recommend_divider"></div>
+  </div>
+
+  <div id="recommendTemplate" class="hide">
+    <div class="">
+        <div class="guide-title">
+          가이드라인
+        </div>
+        <div class="guide-desc ">
+          상세설명
+        </div>
+        <div class="guide-image">
+          <img src="">
+          <span class="source"></span>
+        </div>
+    </div>
+  </div>
+
 
   <div id="loading" class="preloading width100 valign-wrapper">
       <div class="preloader-wrapper active">
@@ -109,20 +76,6 @@
   </div>
 
 
-  <!-- Modal Structure -->
-  <div id="modalClose" class="modal custom">
-    <div class="modal-content">
-      <h5>평가를 중단하시겠습니까?</h5>
-      <p class="modal-description">
-        중단한 평가는 이후에 이어서 평가가 가능합니다.
-      </p>
-    </div>
-    <div class="modal-footer">
-
-      <a class="btn-large evaluate-btn modal-positive modal-close" >평가 재개</a>
-      <a id="btnStopEvaluate" class="modal-negative modal-close">평가 중단</a>
-    </div>
-  </div>
 
 
   <!--  Scripts-->
@@ -135,6 +88,8 @@
   <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
+
+  <script src="js/manager.js"></script>
 
   <!-- TODO: Add SDKs for Firebase products that you want to use
       https://firebase.google.com/docs/web/setup#config-web-app -->
@@ -160,7 +115,7 @@
     //$(".preloading").show();
     $(document).ready(function(){
       $('.modal').modal();
-
+      getContentGuide();
       $("#btnStopEvaluate").click(function() {
         location.href="index.html";
       });

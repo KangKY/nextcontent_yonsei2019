@@ -6,10 +6,15 @@ var Modules = function(mTitle, mAnswerCnt, mYesCnt, mPoint) {
   this.mYesCnt = mYesCnt;
   this.mPoint = mPoint;
   this.underScore = function() {
-    return (this.mPoint <= 25);
+    return (this.mPoint <= 20);
   };
+
+  this.middleOverScore = function() {
+    return (this.mPoint >= 50);
+  };
+
   this.overScore = function() {
-    return (this.mPoint >= 75);
+    return (this.mPoint >= 80);
   }
 }
 
@@ -29,17 +34,23 @@ var sendPropertyList = new Array();
 $(document).ready(function(){
   $(".modal-trigger-custom").click(function() {
     var target = $(this).attr('href');
-    $(".modal-overlay").show();
-    $(target).addClass('active');
+    if(target == 'btnAgree' && localStorage.getItem('agree')) {
+      $("#btnAgree").trigger('click');
+    } else {
+      $(".modal-overlay").show();
+      $(target).addClass('active');
+    }
   });
   $(".modal-close").click(function() {
     var target = $(this).parents('.modal')[0];
-    console.log(target);
     $(".modal-overlay").hide();
     $(target).removeClass('active');
   });
 
   $(".modal-overlay").click(function() {
+    if($('.modal.active').attr('id') == "modalGraph")
+      return;
+
     $(".modal-overlay").hide();
     $('.modal.active').removeClass('active');
   });
@@ -54,40 +65,6 @@ function sendInit() {
   for(var i = 0 ; i < moduleText.length ; i++) {
     sendModuleList.push(new Modules(moduleText[i], 0, 0, 0));
   }
-}
-
-function TestInit() {
-  var avgModule = [54, 25, 60, 15, 70];
-  var avgProperty = [70, 75, 30, 15];
-  var dataModule = [50, 70, 55, 10, 80];
-  var dataProperty = [10, 80, 45, 30];
-  var prosModule = [];
-  var consModule = [];
-  var prosProperty = [];
-  var consProperty = [];
-
-  for(var i = 0 ; i < moduleText.length ; i++) {
-    moduleList.push(new Modules(moduleText[i], 0, 0, dataModule[i]));
-    if(dataModule[i] <= 25)
-      consModule.push(moduleText[i]);
-    else if(dataModule[i] >= 75)
-      prosModule.push(moduleText[i]);
-  }
-  for(var i = 0 ; i < propertyText.length ; i++) {
-    propertyList.push(new Modules(propertyText[i], 0, 0, dataProperty[i]));
-    if(dataProperty[i] <= 25)
-      consProperty.push(propertyText[i]);
-    else if(dataProperty[i] >= 75)
-      prosProperty.push(propertyText[i]);
-  }
-
-  
-  $("#module .pros-cons.pros span").text(prosModule.join(', '));
-  $("#module .pros-cons.cons span").text(consModule.join(', '));
-  $("#property .pros-cons.pros span").text(prosProperty.join(', '));
-  $("#property .pros-cons.cons span").text(consProperty.join(', '));
-
-  drawingChart(avgModule, avgProperty, dataModule, dataProperty );
 }
 
 function ListInit( dataModule, dataProperty) {
@@ -108,8 +85,8 @@ function ListInit( dataModule, dataProperty) {
         avgModules['심미성'], 
         avgModules['표준성'], 
         avgModules['편의성']
-      ].map(function(item) { return parseFloat(item)} );
-      avgProperty = [avgProperties.content, avgProperties.space, avgProperties.manual, avgProperties.expression].map(function(property) { return parseFloat(property)} );
+      ].map(function(item) { return parseInt(item)} );
+      avgProperty = [avgProperties.content, avgProperties.space, avgProperties.manual, avgProperties.expression].map(function(property) { return parseInt(property)} );
     }
     
 
@@ -120,24 +97,50 @@ function ListInit( dataModule, dataProperty) {
     var consModule = [];
     var prosProperty = [];
     var consProperty = [];
+    var middleOverProperty = [];
 
     for(var i = 0 ; i < moduleText.length ; i++) {
       var mPoint = dataModule[i];
       moduleList.push(new Modules(moduleText[i], 0, 0, mPoint));
-      if(mPoint <= 25)
+      if(mPoint <= 20)
         consModule.push(moduleText[i]);
-      else if(mPoint >= 75)
+      else if(mPoint >= 80)
         prosModule.push(moduleText[i]);
+
+      
     }
 
     for(var i = 0 ; i < propertyText.length ; i++) {
-      var mPoint = parseFloat(dataProperty[i]);
+      var mPoint = parseInt(dataProperty[i]);
       propertyList.push(new Modules(propertyText[i], 0, 0, mPoint));
-      if(mPoint <= 25)
+      if(mPoint <= 20)
         consProperty.push(propertyText[i]);
-      else if(mPoint >= 75)
+      else if(mPoint >= 80)
         prosProperty.push(propertyText[i]);
+
+      if(mPoint >= 50)
+        middleOverProperty.push(propertyText[i]);
     }
+
+    $.getJSON('./js/property.json', function(data) {    
+      console.log(middleOverProperty);
+      console.log(middleOverProperty.sort());
+      var _property = data.property;
+      $("#property .description .description_title").empty();
+      $("#property .description .description_desc").empty();
+      for(var i = 0 ; i < _property.length ; i++) {
+        if( JSON.stringify(middleOverProperty.sort()) == JSON.stringify(_property[i].property.sort()) ) {
+          $("#property .description .description_title").text(_property[i].result_title);
+          $("#property .description .description_desc").text(_property[i].result_desc);
+          if(consProperty.length > 0) {
+            var _text = "<br>특히, "+consProperty.join(', ')+"을(를) 중심으로 콘텐츠를 향상시키는 것을 권장한다.";
+            $("#property .description .description_desc").append(_text);
+          }
+            
+          break;
+        }  
+      }
+    });
 
     $("#module .pros-cons.pros span").text(prosModule.join(', ') == ''?'없음':prosModule.join(', '));
     $("#module .pros-cons.cons span").text(consModule.join(', ') == ''?'없음':consModule.join(', '));
@@ -168,6 +171,9 @@ function getQuestion(callback) {
   var expressionRef = firebase.database().ref('questions/expression');
   var manualRef = firebase.database().ref('questions/manual');
   //localStorage.removeItem('questions');
+
+  $("#cardList").empty();
+
   contentRef.once('value').then(function(snapshot) {
     var _AnswerCnt = 0;
     console.log('1');
@@ -181,6 +187,7 @@ function getQuestion(callback) {
           template.find('div.evaluate-num').prepend(questionNo);
           template.find('div.card.custom').attr('data-num',questionNo);
           template.find('div.card-content p').text(questionItem.guideline);
+          template.find('div.helper-description').text(questionItem.description);
           $("#cardList").append(template);
           questionNo++;
         })
@@ -204,6 +211,8 @@ function getQuestion(callback) {
           template.find('div.evaluate-num').prepend(questionNo);
           template.find('div.card.custom').attr('data-num',questionNo);
           template.find('div.card-content p').text(questionItem.guideline);
+          template.find('div.helper-description').text(questionItem.description);
+          
           $("#cardList").append(template);
           questionNo++;
         })
@@ -227,6 +236,7 @@ function getQuestion(callback) {
           template.find('div.evaluate-num').prepend(questionNo);
           template.find('div.card.custom').attr('data-num',questionNo);
           template.find('div.card-content p').text(questionItem.guideline);
+          template.find('div.helper-description').text(questionItem.description);
           $("#cardList").append(template);
           questionNo++;
         })
@@ -250,6 +260,7 @@ function getQuestion(callback) {
           template.find('div.evaluate-num').prepend(questionNo);
           template.find('div.card.custom').attr('data-num',questionNo);
           template.find('div.card-content p').text(questionItem.guideline);
+          template.find('div.helper-description').text(questionItem.description);
           $("#cardList").append(template);
           questionNo++;
         })
@@ -263,6 +274,22 @@ function getQuestion(callback) {
     if(callCount == 4) { 
       clearInterval(timer);
       $(".preloading").hide(); 
+      $("#cardLoading").hide();
+      document.addEventListener('scroll', function() {
+        //var currentPercent = (window.scrollY) / $(".evaluate-wrap").height() * 100;
+        var currentPercent = $(window).scrollTop() / ($(document).height() - $(window).height()) * 100
+
+        currentPercent = parseInt(currentPercent);
+        $(".determinate").css("width",currentPercent+"%");
+        
+        if(currentPercent > 95) {
+          $("#complete-button").removeClass('hide');
+        }
+        else {
+          $("#complete-button").addClass('hide');
+        }
+      });
+
       if(typeof callback === 'function')
         callback(); 
     }
@@ -280,7 +307,7 @@ function getResultDateFromDB() {
         //console.log(snapshot.val());
 
         if(snapshot.val() == null) {
-          M.toast({html: '저장된 평가 히스토리가 없습니다.', classes: 'custom', displayLength:2000});
+          M.toast({html: '평가 기록이 없습니다.', classes: 'custom', displayLength:2000});
           setTimeout(function(){
             location.href="index.html";
           },2000);
@@ -325,8 +352,8 @@ function getResultDateFromDB() {
           Modules['심미성'], 
           Modules['표준성'], 
           Modules['편의성']
-        ].map(function(item) { return parseFloat(item)} );
-        var chartProperties = [Properties.content, Properties.space, Properties.manual, Properties.expression].map(function(property) { return parseFloat(property)} );
+        ].map(function(item) { return parseInt(item)} );
+        var chartProperties = [Properties.content, Properties.space, Properties.manual, Properties.expression].map(function(property) { return parseInt(property)} );
 
 
         ListInit(chartModules,chartProperties);
@@ -337,14 +364,16 @@ function getResultDateFromDB() {
         //console.log(getTranlateTimestamp(regiDates));
         //ListInit(Object.values(Modules), Object.values(Properties));
         
-        
+        $(".history_loading").hide();
+        $(".chart").removeClass('hidden');
+        $('.history-info-wrap').removeClass('hidden');
       });
     } else {
       console.log("not login");
       var item = JSON.parse(localStorage.getItem('Result'));
 
       if(item == null) {
-        M.toast({html: '저장된 평가 히스토리가 없습니다.', classes: 'custom', displayLength:2000});
+        M.toast({html: '평가 기록이 없습니다.', classes: 'custom', displayLength:2000});
         setTimeout(function(){
           location.href="index.html";
         },2000);
@@ -370,13 +399,16 @@ function getResultDateFromDB() {
         Modules['심미성'], 
         Modules['표준성'], 
         Modules['편의성']
-      ].map(function(item) { return parseFloat(item)} );
-      var chartProperties = [Properties.content, Properties.space, Properties.manual, Properties.expression].map(function(property) { return parseFloat(property)} );
+      ].map(function(item) { return parseInt(item)} );
+      var chartProperties = [Properties.content, Properties.space, Properties.manual, Properties.expression].map(function(property) { return parseInt(property)} );
       drawTodayTab();
       ListInit(chartModules,chartProperties);
       $(".no-login").show();
       $(".preloading").hide();
       
+      $(".history_loading").hide();
+      $(".chart").removeClass('hidden');
+      $('.history-info-wrap').removeClass('hidden');
     }
   });
 }
@@ -470,8 +502,8 @@ function getSpecificDateFromDB(RegiDate) {
             Modules['심미성'], 
             Modules['표준성'], 
             Modules['편의성']
-          ].map(function(item) { return parseFloat(item)} );
-          var chartProperties = [Properties.content, Properties.space, Properties.manual, Properties.expression].map(function(property) { return parseFloat(property)} );
+          ].map(function(item) { return parseInt(item)} );
+          var chartProperties = [Properties.content, Properties.space, Properties.manual, Properties.expression].map(function(property) { return parseInt(property)} );
   
   
           ListInit(chartModules,chartProperties);
@@ -505,19 +537,17 @@ function generateModulePoints() {
     } catch(e) {
       console.log($(this).parent().data('category'));
     }
-    
-    
   });
 
   for(var i=0 ; i < sendModuleList.length ; i++) {
     if(sendModuleList[i].mAnswerCnt != 0)
-      sendModuleList[i].mPoint = (sendModuleList[i].mYesCnt * 100 / sendModuleList[i].mAnswerCnt).toFixed(2);
+      sendModuleList[i].mPoint = parseInt(sendModuleList[i].mYesCnt * 100 / sendModuleList[i].mAnswerCnt);
   }
     
   
   for(var j=0 ; j < sendPropertyList.length ; j++) {
     if(sendPropertyList[j].mAnswerCnt != 0)
-      sendPropertyList[j].mPoint = (sendPropertyList[j].mYesCnt * 100 / sendPropertyList[j].mAnswerCnt).toFixed(2);
+      sendPropertyList[j].mPoint = parseInt(sendPropertyList[j].mYesCnt * 100 / sendPropertyList[j].mAnswerCnt);
   }
   console.log(sendModuleList);
   console.log(sendPropertyList);
@@ -536,13 +566,13 @@ function setResultDataToDB() {
 
   for(var i = 0 ; i < sendModuleList.length ; i++) {
     var title = sendModuleList[i].mTitle;
-    var point = parseFloat(sendModuleList[i].mPoint);
+    var point = parseInt(sendModuleList[i].mPoint);
     sendModule[title] = point;
   }
 
   for(var j = 0 ; j < sendPropertyList.length ; j++) {
     var title = sendPropertyList[j].mTitle;
-    var point = parseFloat(sendPropertyList[j].mPoint);
+    var point = parseInt(sendPropertyList[j].mPoint);
     sendProperty[title] = point;
   }  
 
@@ -563,11 +593,11 @@ function setResultDataToDB() {
     if(avgCount != 0) {
       for( var key in avgProperties ) {
         //console.log( key + '=>' + avgProperties[key] );
-        avgProperties[key] = (sendProperty[key] + parseFloat(avgProperties[key])) / (avgCount + 1);
+        avgProperties[key] = (sendProperty[key] + parseInt(avgProperties[key])) / (avgCount + 1);
       }
       for( var key in avgModules ) {
         //console.log( key + '=>' + avgModules[key] );
-        avgModules[key] = (sendModule[key] + parseFloat(avgModules[key])) / (avgCount + 1);
+        avgModules[key] = (sendModule[key] + parseInt(avgModules[key])) / (avgCount + 1);
       }
 
       var avgObj = {
@@ -621,22 +651,184 @@ function setResultDataToDB() {
 }
 
 
+
+/*
+* Account 페이지에서 추가 정보 변경
+*/
 function updateRegisterInfoToDB(info, type, callback) {
-  var user = firebase.auth().currentUser;
-  if(type=="industry_main") {
-    firebase.database().ref('users/' + user.uid).update({
-      industry: info
-    }).then(()=> {
-      callback('산업 설정이 변경되었습니다.')
-    });
-  } else if(type =="technic_main") {
-    firebase.database().ref('users/' + user.uid).update({
-      technic : info
-    }).then(()=> {
-      callback('기술 설정이 변경되었습니다.')
-    });
-  }
+  firebase.auth().onAuthStateChanged(function(user) {
+    console.log(user);
+    if (user) {
+      //var user = firebase.auth().currentUser;
+      if(type=="industry_main") {
+        firebase.database().ref('users/' + user.uid).update({
+          industry: info
+        }).then(()=> {
+          callback('산업 설정이 변경되었습니다.')
+        });
+      } else if(type =="technic_main") {
+        firebase.database().ref('users/' + user.uid).update({
+          technic : info
+        }).then(()=> {
+          callback('기술 설정이 변경되었습니다.')
+        });
+      }
+    }
+  });
 }
+
+
+
+
+
+/*
+* 콘텐츠 가이드 관련
+*/
+
+function getContentGuide() {
+  var items = JSON.parse(localStorage.getItem('guide_selections'));
+
+  $.getJSON('./js/guide.json', function(data) {         
+    
+
+    data = data.guides;
+    //console.log(data);
+    //console.log(items);
+    $.each(items.content, function(idx, item) {
+      //console.log(item)
+      var category = items.content[idx];
+      var _content = data[item];
+      
+      $.each(items.space, function(idx, item) {
+        var _space = _content[item];
+        //console.log(_space);
+
+        $.each(items.age, function(idx, item) {
+          var resultData = _space[item];
+
+          var guideTemplate = $("#guideTemplate").children().clone();
+          
+          
+          guideTemplate.find('div.guideline').text(resultData.guideline);
+          for(var i = 0 ; i < resultData.recommend_title.length; i++) {
+            var recommendTemplate = $("#recommendTemplate").children().clone();
+            recommendTemplate.find('div.guide-title').text(resultData.recommend_title[i]);
+            recommendTemplate.find('div.guide-desc').text(resultData.recomment_desc[i]);
+
+            for(var j = 0 ; j < resultData.image.length; j++) {
+              if(resultData.recommend_title.length > 1 && i == 0) 
+                break;
+              recommendTemplate.find('div.guide-image img').attr('src',"img/guide/"+category+"/"+resultData.image[j]);
+              recommendTemplate.find('div.guide-image span.source').text(resultData.source[j]);
+            }
+
+            guideTemplate.find('div#recommendList').append(recommendTemplate);
+          }
+          
+          $("#guideList").append(guideTemplate);
+        });
+
+        console.log(_space['none']);
+        if(_space['none']) {
+          var resultData = _space['none'];
+
+          var guideTemplate = $("#guideTemplate").children().clone();
+          
+          
+          guideTemplate.find('div.guideline').text(resultData.guideline);
+          for(var i = 0 ; i < resultData.recommend_title.length; i++) {
+            var recommendTemplate = $("#recommendTemplate").children().clone();
+            recommendTemplate.find('div.guide-title').text(resultData.recommend_title[i]);
+            recommendTemplate.find('div.guide-desc').text(resultData.recomment_desc[i]);
+
+            for(var j = 0 ; j < resultData.image.length; j++) {
+              if(resultData.recommend_title.length > 1 && i == 0) 
+                break;
+              recommendTemplate.find('div.guide-image img').attr('src',"img/guide/"+category+"/"+resultData.image[j]);
+              recommendTemplate.find('div.guide-image span.source').text(resultData.source[j]);
+            }
+
+            guideTemplate.find('div#recommendList').append(recommendTemplate);
+          }
+          
+          $("#guideList").append(guideTemplate);
+        }
+      });
+    });
+
+    
+  });
+}
+
+
+function setGuideSelections() {
+  localStorage.removeItem('guide_selections');
+
+
+  if($("#content-body").find('a.btn.selected').length == 0 &&
+    $("#space-body").find('a.btn.selected').length == 0 &&
+    $("#age-body").find('a.btn.selected').length == 0) {
+
+    M.toast({html: '콘텐츠, 공간 유형, 연령을 선택해주세요.', classes: 'custom', displayLength:2000});
+    return;
+  }
+
+  var content = [];
+  if($("#content-body").find('a.btn.selected').length != 0)
+    $("#content-body").find('a.btn.selected').each(function(){ content.push($(this).data('category')) });
+  else
+    $("#content-body").find('a.btn').each(function(){ content.push($(this).data('category')) });
+  
+
+  var space = []; 
+  if($("#space-body").find('a.btn.selected').length != 0)
+    $("#space-body").find('a.btn.selected').each(function(){ space.push($(this).data('category')) });
+  else
+    $("#space-body").find('a.btn').each(function(){ space.push($(this).data('category')) });
+
+  var age = [];
+  if($("#age-body").find('a.btn.selected').length != 0)
+    $("#age-body").find('a.btn.selected').each(function(){ age.push($(this).data('category')) });
+  else
+    $("#age-body").find('a.btn').each(function(){ age.push($(this).data('category')) });
+
+  var selectedItem = {
+    'content': content, 
+    'space':space, 
+    'age':age
+  };
+
+  localStorage.setItem('guide_selections', JSON.stringify(selectedItem));
+  location.href="guide_detail.html";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function getUrlParams() {
@@ -644,6 +836,7 @@ function getUrlParams() {
   window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
   return params;
 } 
+
 
 
 function drawingChart(avgModule, avgProperty, dataModule, dataProperty) {
@@ -654,7 +847,7 @@ function drawingChart(avgModule, avgProperty, dataModule, dataProperty) {
   Highcharts.chart('moduleChart', {
     chart: {
       polar: true,
-      type: 'line'
+      type: 'line',
     },
     title: {
       text:null
@@ -694,21 +887,15 @@ function drawingChart(avgModule, avgProperty, dataModule, dataProperty) {
       lineWidth: 0,
       min: 0
     },
-  
-    // tooltip: {
-    //   shared: true,
-    //   pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
-    // },
-  
     legend: {
       align: 'right',
       verticalAlign: 'middle'
     },
-  
     plotOptions: {
       series: {
           fillOpacity: 0.5,
-          borderWidth: 0
+          borderWidth: 2,
+          borderColor: 'black'
       }
     },
   
@@ -728,6 +915,8 @@ function drawingChart(avgModule, avgProperty, dataModule, dataProperty) {
       data: dataModule,
       type:'area',
       color:'#A3A5E4',
+      borderColor:'#000',
+      borderWidth: 2,
       pointPlacement: 'on',
       marker: {
         enabled: false
@@ -816,6 +1005,7 @@ function drawingChart(avgModule, avgProperty, dataModule, dataProperty) {
       data: dataProperty,
       type:'area',
       color:'#A3A5E4',
+      borderColor:'#ffffff',
       pointPlacement: 'on',
       marker: {
         enabled: false

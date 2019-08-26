@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
+  <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -184,10 +185,30 @@
       sessionStorage.removeItem('email');
       sessionStorage.removeItem('password');
 
-      $("#email").on("focusout", function(e) {
-        if($(this).hasClass("valid")) {
+      // $("#email").on("focusout", function(e) {
+      //   if($(this).hasClass("valid")) {
+      //     $("span.input-clear").show();
+      //   } 
+      // });
+
+      $("#email").on("focusin", function(e) {
+        e.preventDefault();
+        if($(this).val().length > 0) {
+          console.log("valid!");
           $("span.input-clear").show();
-        } 
+        }
+      });
+
+      $("#email").on("keyup", function(e) {
+        e.preventDefault();
+        if($(this).val().length > 0) {
+          console.log("valid!");
+          $("span.input-clear").show();
+        }
+      });
+      $("#email").on("focusout", function(e) {
+        e.preventDefault();
+        setTimeout(function(){$("span.input-clear").hide();},100);
       });
 
       $("span.input-clear").click(function() {

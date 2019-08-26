@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
+  <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Starter Template - Materialize</title>
@@ -44,13 +45,13 @@
             
               <div class="nav-list white-text">
                   <li>
-                      <a class="waves-effect selected" href="index.html"><img src="img/ox_on.png">콘텐츠 UV 평가</a>
+                      <a class="waves-effect selected" href="index.html"><img src="img/icons/ox_on.svg">콘텐츠 UV 평가</a>
                   </li>
                   <li>
-                      <a class="waves-effect" href="history.html"><img src="img/history_off.png">평가 히스토리</a>
+                      <a class="waves-effect" href="history.html"><img src="img/icons/history_off.svg">평가 히스토리</a>
                   </li>
                   <li>
-                      <a class="waves-effect" href="guide.html"><img src="img/guide_off.png">콘텐츠 가이드</a>
+                      <a class="waves-effect" href="guide.html"><img src="img/icons/guide_off.svg">콘텐츠 가이드</a>
                   </li>
               </div>
 
@@ -64,8 +65,8 @@
   </div>
 
 
-  <div class="container">
-    <div class="section">
+  <div class="container innerScroll">
+    <div class="section no-pad-top">
 
       <!--   Icon Section   -->
       <div class="row no-mar-bot">
@@ -102,10 +103,10 @@
                         </div>
       
                         <div class="col s3 xs3">
-                          <a data-category="av" class=" btn btn-custom">
-                            <img src="img/icons/selecticon_av.svg">
+                          <a data-category="music" class=" btn btn-custom">
+                            <img src="img/icons/selecticon_music.svg">
                           </a>
-                          <div class="info-text ">AV</div>
+                          <div class="info-text ">음악</div>
                         </div>
       
                         <div class="col s3 xs3">
@@ -280,10 +281,10 @@
   </div>
 
   <footer >
-      <div class="footer-button">
-          <a id="modalTest" class="waves-effect waves-light btn-large evaluate-btn bold modal-trigger-custom" href="#modal1">평가 시작</a>
+      <div class="footer-button fixed">
+          <a id="btnEvaluate" class="waves-effect waves-light btn-large evaluate-btn bold">평가 시작</a>
       </div>
-      <div class="no-login">비로그인 상태에서는 최근 평가 기록만 저장됩니다.</div>
+      <div class="no-login">비로그인 상태에서는 최근 평가 기록만 볼 수 있습니다.</div>
   </footer>
 
   
@@ -309,19 +310,22 @@
   </div>
 
   <!-- Modal Structure -->
-  <div id="modalHistory" class="modal custom">
-    <div class="modal-content">
-      <h5>진행중인 평가가 있습니다.</h5>
-      <p class="modal-description">
-        아래 [이어서 평가] 버튼을 누르면 진행중인 평가를 이어서 시작할 수 있습니다.
-      </p>
-    </div>
-    <div class="modal-footer">
 
-      <a id="btnOldEvaluate" class="waves-effect waves-light btn-large evaluate-btn bold modal-trigger" href="evaluate.html?process=new">이어서 평가</a>
-      <a id="btnNewEvaluate" class="modal-negative modal-close" >새로운 평가</a>
+  <div id="modalHistory" class="modal custom">
+      <div class="modal-content">
+        <h5>진행중인 평가가 있습니다.</h5>
+        <p class="modal-description">
+          아래 [이어서 평가] 버튼을 누르면 진행중인 평가를 이어서 시작할 수 있습니다.
+        </p>
+      </div>
+      <div class="modal-footer">
+  
+        <a id="btnOldEvaluate" class="waves-effect waves-light btn-large evaluate-btn bold modal-trigger" href="evaluate.html?process=new">이어서 평가</a>
+        <a id="btnNewEvaluate" class="modal-negative modal-close" >새로운 평가</a>
+      </div>
     </div>
-  </div>
+
+  
 
 
   <!--  Scripts-->
@@ -353,14 +357,14 @@
     firebase.initializeApp(firebaseConfig);
 
 
-    if(sessionStorage.getItem('uid')!=null) {
-      $(".logininfo").hide();
-      $(".userinfo").show();
-      $("div.user-email").text(sessionStorage.getItem('email'));
-      $(".no-login").hide();
-    } else {
-      $(".no-login").show();
-    }
+    // if(sessionStorage.getItem('uid')!=null) {
+    //   $(".logininfo").hide();
+    //   $(".userinfo").show();
+    //   $("div.user-email").text(sessionStorage.getItem('email'));
+    //   $(".no-login").hide();
+    // } else {
+    //   $(".no-login").show();
+    // }
 
     firebase.auth().onAuthStateChanged(function(user) {
       console.log(user);
@@ -379,6 +383,7 @@
           // User is signed out.
           // ...
         $(".no-login").show();
+        $(".footer-button.fixed").css("bottom", '3vh');
       }
     });
 
@@ -429,7 +434,7 @@
           badge.attr('src', 'img/icons/arrow_blue_up.svg');
       });
 
-      $("#btnAgree").on('click', function() {
+      $("#btnEvaluate").on('click', function() {
         if(localStorage.getItem("resulting") != null) {
           $(".modal-overlay").show();
           $("#modalHistory").addClass('active');

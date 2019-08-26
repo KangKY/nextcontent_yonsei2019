@@ -43,12 +43,63 @@
     
     
       <div class="evaluate-wrap">
-        <div class="section">
+        <div class="section no-pad-bot">
           <!--   Icon Section   -->
           <div class="row">
+              <div id="cardLoading" class="col s12">
+                  <div class="card-wrap">
+                    <div class="card horizontal custom evaluate_loading" data-num='72'>
+                      <div class="card-stacked">
+                        <div class="card-content">
+                          <div class="evaluate_loading_bar"></div>
+                          <div class="evaluate_loading_bar"></div>
+                          <div class="evaluate_loading_bar half"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card-wrap">
+                    <div class="card horizontal custom evaluate_loading" data-num='72'>
+                      <div class="card-stacked">
+                        <div class="card-content">
+                          <div class="evaluate_loading_bar"></div>
+                          <div class="evaluate_loading_bar"></div>
+                          <div class="evaluate_loading_bar half"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card-wrap">
+                    <div class="card horizontal custom evaluate_loading" data-num='72'>
+                      <div class="card-stacked">
+                        <div class="card-content">
+                          <div class="evaluate_loading_bar"></div>
+                          <div class="evaluate_loading_bar"></div>
+                          <div class="evaluate_loading_bar half"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card-wrap">
+                    <div class="card horizontal custom evaluate_loading" data-num='72'>
+                      <div class="card-stacked">
+                        <div class="card-content">
+                          <div class="evaluate_loading_bar"></div>
+                          <div class="evaluate_loading_bar"></div>
+                          <div class="evaluate_loading_bar half"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+              </div>
               
               <div id="cardList" class="col s12 m7">
-                     
+
 
     
               </div>
@@ -58,12 +109,12 @@
       </div>
   </div>
   
-
+  <div class="no-login">비로그인 상태에서는 최근 평가 기록만 저장됩니다.</div>
   <footer id="complete-button" class=" hide">
-    <div class="footer-btn-fixed">
+    <div class="footer-btn-fixed" style="padding:10px 10px;">
         <a id="btnEvaluateComplete" class="waves-effect waves-light btn-large evaluate-btn bold">평가 완료</a>
     </div>
-    <div class="no-login">비로그인 상태에서는 최근 평가 기록만 저장됩니다.</div>
+   
   </footer>
 
   <div id="loading" class="preloading width100 valign-wrapper">
@@ -86,7 +137,7 @@
           <div class="card-stacked">
             <div class="card-content">
                 <div class="evaluate-num">
-                  <img class="check" src="img/check.png">
+                  <img class="check" src="img/icons/check.svg">
                 </div>
               <p>헤드마운트디스플레이 기반의 VR 3D 영상 콘텐츠 제작 시, 지오메트리 에러(ex. 수직 불일치, 기울임 불일치, 스케일 불일치 등)가 발생하지 않는가?</p>
             </div>
@@ -219,7 +270,7 @@
           var close = 'img/icons/question_info_on.svg';
           $(this).parent().toggleClass("active");
           $(this).attr("src",  ($(this).attr("src")==basic? close : basic));
-          $(this).closest("div.card").next('div.helper-description').slideToggle();
+          $(this).closest("div.card").next('div.helper-description').slideToggle('fast');
           e.stopPropagation()
       });
 
@@ -228,20 +279,7 @@
           $(this).toggleClass("selected");
       });
 
-      document.addEventListener('scroll', function() {
-        //var currentPercent = (window.scrollY) / $(".evaluate-wrap").height() * 100;
-        var currentPercent = $(window).scrollTop() / ($(document).height() - $(window).height()) * 100
-
-        currentPercent = parseInt(currentPercent);
-        $(".determinate").css("width",currentPercent+"%");
-        
-        if(currentPercent > 95) {
-          $("#complete-button").removeClass('hide');
-        }
-        else {
-          $("#complete-button").addClass('hide');
-        }
-      });
+      
 
      
       $("#btnStopEvaluate").click(function() {

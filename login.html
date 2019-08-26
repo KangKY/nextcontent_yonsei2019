@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
+  <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -60,11 +61,17 @@
                   </div>
               </div>
 
-              <form class="col s12" autocomplete="off">
+              <form class="col s12" >
                 <div class="row no-mar-bot">
                   <div class="input-field col s12">
-                    <input placeholder="이메일주소를 입력해주세요" id="email" type="email" class="validate" autocomplete=off>
-                    <label for="email">이메일</label>
+                      <input type="text" id="email" style="display: block; width:0px; height:0px; border: 0;margin:0;">
+                      <input type="email"  style="width:0;height:0;visibility:hidden;position:absolute;left:0;top:0" />
+                      <input type="password" style="width:0;height:0;visibility:hidden;position:absolute;left:0;top:0" />
+
+
+
+                    <input placeholder="이메일주소를 입력해주세요" id="address" type="email" class="validate" >
+                    <label for="address">이메일</label>
                     <span class="input-clear">
                         <img src="img/close_deletetext.png">
                       </span>
@@ -74,7 +81,8 @@
 
                 <div class="row no-mar-bot">
                   <div class="input-field col s12">
-                    <input placeholder="비밀번호를 입력해주세요" id="password" type="password" class="validate" autocomplete="false">
+                      <input type="password" style="display: block; width:0px; height:0px; border: 0;margin:0;">
+                    <input placeholder="비밀번호를 입력해주세요" id="password" type="password" class="validate">
                     <label for="password">비밀번호</label>
                     <span class="helper-text" data-error="비밀번호가 일치하지 않습니다" data-success=""></span>
                   </div>
@@ -169,8 +177,8 @@
           $("#password").removeClass("valid").addClass("invalid");
         } 
         else if(errorCode == 'auth/user-not-found') {
-          $("#email").siblings('span.helper-text').attr("data-error",'등록되지 않은 이메일주소입니다');
-          $("#email").removeClass("valid").addClass("invalid");
+          $("#address").siblings('span.helper-text').attr("data-error",'등록되지 않은 이메일주소입니다');
+          $("#address").removeClass("valid").addClass("invalid");
         }
         else {
           console.log(errorCode);
@@ -183,16 +191,30 @@
     $(document).ready(function(){
       $('.modal').modal();
 
-      $("#email").on("focusout", function(e) {
-        if($(this).hasClass("valid")) {
+      $("#address").on("focusin", function(e) {
+        e.preventDefault();
+        if($(this).val().length > 0) {
           console.log("valid!");
           $("span.input-clear").show();
         }
+      });
 
+      $("#address").on("keyup", function(e) {
+        e.preventDefault();
+        if($(this).val().length > 0) {
+          console.log("valid!");
+          $("span.input-clear").show();
+        }
+      });
+
+      $("#address").on("focusout", function(e) {
+        e.preventDefault();
+        //$("span.input-clear").hide();
+        setTimeout(function(){$("span.input-clear").hide();},100);
       });
 
       $("span.input-clear").click(function() {
-        $("#email").val('');
+        $("#address").val('');
       })
 
       // $("#password").on("focusout", function (e) {
@@ -222,11 +244,22 @@
         }
       });
 
+      $("input.validate").on("focusout",function() {
+        if($(".validate.valid").length == 2) {
+          $(".round-blue-btn").removeClass('inactive');
+        }
+        else {
+          if($(".round-blue-btn").hasClass('inactive') == false) {
+            $(".round-blue-btn").addClass('inactive');
+          }
+        }
+      });
+
       $("#btnLogin").click(function(){
         if($(this).hasClass('inactive')) {
 
         } else {
-          signInWithEmailAndPassword($("#email").val(), $("#password").val());
+          signInWithEmailAndPassword($("#address").val(), $("#password").val());
         } 
       });
 
