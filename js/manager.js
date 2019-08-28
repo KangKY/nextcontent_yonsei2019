@@ -64,7 +64,7 @@ function ListInit(dataModule, dataProperty) {
 
   var ref = firebase.database().ref("averages");
   ref.once("value").then(function(snapshot) {
-    console.log(snapshot.val());
+    //console.log(snapshot.val());
 
     var avgProperties = snapshot.val().Properties;
     var avgModules = snapshot.val().Modules;
@@ -117,8 +117,6 @@ function ListInit(dataModule, dataProperty) {
     }
 
     $.getJSON("./js/module.json", function(data) {
-      console.log(middleOverProperty);
-      console.log(middleOverProperty.sort());
       var _module = data.module;
       $("#module .description .description_title").empty();
       $("#module .description .description_desc").empty();
@@ -147,8 +145,6 @@ function ListInit(dataModule, dataProperty) {
     });
 
     $.getJSON("./js/property.json", function(data) {
-      console.log(middleOverProperty);
-      console.log(middleOverProperty.sort());
       var _property = data.property;
       $("#property .description .description_title").empty();
       $("#property .description .description_desc").empty();
